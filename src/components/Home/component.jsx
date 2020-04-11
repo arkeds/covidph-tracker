@@ -1,29 +1,39 @@
 import React, {Component} from 'react';
-import Message from '../Shared/Message'
+import TabNavigation from '../Shared/TabNavigation';
+import Counter from '../Counter';
+import About from '../About';
 
 class Home extends Component {
+
+    state = {
+        activeTab: 'counter'
+    }
+
 
     componentDidMount(){
         this.props.fetchCases();
     }
 
+    shouldComponentUpdate(nextProps, nextState) {
+        return nextProps.loading !== this.props.loading ||
+                nextState.activeTab !== this.state.activeTab;
+    }
+
     render() {
+        const {activeTab} = this.state;
         return (
-            <main className="main columns">
-                <div className="column">
-                    <Message type={'warning'} title="Confirmed Cases" message={this.props.infected} />
-                </div>
-                <div className="column">
-                    <Message type={'danger'} title="Deceased" message={this.props.deceased} />
-                </div>
-                <div className="column">
-                    <Message type={'success'} title="Recovered" message={this.props.recovered} />
-                </div>
-                <div className="column">
-                    <Message type={'info'} title="Tested" message={this.props.tested} />
-                </div>
+            <main className="main">
+                <TabNavigation activeTab={activeTab} tabChange={this.handleTabChange} />
+                {activeTab === 'counter' && <Counter {...this.props}  />}
+                {activeTab === 'about' && <About />}
             </main>
         )
+    }
+
+    handleTabChange = (tab) => {
+        this.setState({
+            activeTab: tab
+        });
     }
 }
 

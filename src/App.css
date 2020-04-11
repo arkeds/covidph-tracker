@@ -16,3 +16,9 @@ main {
 .align-center {
     text-align: center;
 }
+
+.refresh-button {
+    width: 93% !important;
+    margin-left: auto;
+    margin-right: auto;
+}

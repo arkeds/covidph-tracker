@@ -27,6 +27,7 @@ const initialState = {
     recovered: 0,
     tested: 0,
     loading: false,
+    lastUpdate: "",
 }
 
 const casesReducer = (state = initialState, {type, payload}) => {
@@ -52,7 +53,9 @@ const casesReducer = (state = initialState, {type, payload}) => {
                 infected: payload.infected,
                 tested: payload.tested,
                 recovered: payload.recovered,
-                deceased: payload.deceased
+                deceased: payload.deceased,
+                lastUpdate: payload.lastUpdatedAtApify,
+                loading: false,
             }
             break;
         }
