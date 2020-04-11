@@ -8,7 +8,7 @@ const TabNavigation = (props) => {
                     className={`${props.activeTab === 'counter' ? 'is-active' : ''}`} 
                     onClick={() => props.tabChange('counter')}
                 >
-                    <a href="/#">
+                    <a href="javascript:;">
                         <span className="icon is-small"><i className="fa fa-dashboard" aria-hidden="true"></i></span>
                         <span>Dashboard</span>
                     </a>
@@ -17,7 +17,7 @@ const TabNavigation = (props) => {
                     className={`${props.activeTab === 'about' ? 'is-active' : ''}`} 
                     onClick={() => props.tabChange('about')}
                 >
-                    <a href="/#">
+                    <a href="javascript:;">
                         <span className="icon is-small"><i className="fa fa-info-circle" aria-hidden="true"></i></span>
                         <span>About</span>
                     </a>
